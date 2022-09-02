@@ -7,9 +7,10 @@ public class Customer {
     private String lastName;
     private String email;
 
-    public Customer(String firstName, String lastName, String email) {
+    public Customer(String firstName, String lastName, String email) throws IllegalArgumentException {
         this.firstName = firstName;
         this.lastName = lastName;
+        Customer.isEmailValid(email);
         this.email = email;
     }
 
@@ -37,7 +38,7 @@ public class Customer {
         this.email = email;
     }
 
-    public boolean isEmailValid() {
+    public static boolean isEmailValid(String email) throws IllegalArgumentException {
         String patternString = "^(.+)@(.+).(.+)$";
         Pattern pattern = Pattern.compile(patternString);
 
