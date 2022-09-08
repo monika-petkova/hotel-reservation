@@ -49,6 +49,10 @@ public class Customer {
         return true;
     }
 
+    public boolean equals(Customer customer) {
+        return email.equals(customer.email);
+    }
+
     @Override
     public String toString() {
         return "Customer{" +

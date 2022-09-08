@@ -13,6 +13,13 @@ public class Room implements IRoom {
         this.isFree = isFree;
     }
 
+    public Room(IRoom room) {
+        this.roomNumber = room.getRoomNumber();
+        this.roomPrice = room.getRoomPrice();
+        this.roomType = room.getRoomType();
+        this.isFree = room.isFree();
+    }
+
     @Override
     public String getRoomNumber() {
         return roomNumber;
