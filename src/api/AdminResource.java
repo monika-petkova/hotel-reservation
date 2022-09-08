@@ -9,21 +9,14 @@ import java.util.List;
 public class AdminResource {
     private final CustomerService customerService;
     private final ReservationService reservationService;
-    private static AdminResource resource;
+    private static final AdminResource resource = new AdminResource();
 
-    private AdminResource(CustomerService customerService, ReservationService reservationService) {
-        this.customerService = customerService;
-        this.reservationService = reservationService;
+    private AdminResource() {
+        this.customerService = CustomerService.getInstance();
+        this.reservationService = ReservationService.getInstance();
     }
 
-    public static void initInstance(CustomerService customerService, ReservationService reservationService) {
-        AdminResource.resource = new AdminResource(customerService, reservationService);
-    }
-
-    public static AdminResource getInstance() throws Exception {
-        if (AdminResource.resource == null) {
-            throw new Exception("Resource not initialized");
-        }
+    public static AdminResource getInstance() {
         return AdminResource.resource;
     }
 

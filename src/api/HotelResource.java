@@ -11,21 +11,14 @@ import java.util.List;
 public class HotelResource {
     private final CustomerService customerService;
     private final ReservationService reservationService;
-    private static HotelResource resource;
+    private static HotelResource resource = new HotelResource();
 
-    private HotelResource(CustomerService customerService, ReservationService reservationService) {
-        this.customerService = customerService;
-        this.reservationService = reservationService;
+    private HotelResource() {
+        this.customerService = CustomerService.getInstance();
+        this.reservationService = ReservationService.getInstance();
     }
 
-    public static void initInstance(CustomerService customerService, ReservationService reservationService) {
-        HotelResource.resource = new HotelResource(customerService, reservationService);
-    }
-
-    public static HotelResource getInstance() throws Exception {
-        if (HotelResource.resource == null) {
-            throw new Exception("Resource not initialized");
-        }
+    public static HotelResource getInstance() {
         return HotelResource.resource;
     }
 

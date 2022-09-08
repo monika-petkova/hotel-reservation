@@ -1,12 +1,10 @@
 package service;
 
-import api.HotelResource;
 import model.Customer;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class CustomerService {
     private Map<String, Customer> customerMap;
@@ -16,10 +14,7 @@ public class CustomerService {
         this.customerMap = new HashMap<>();
     }
 
-    public static CustomerService getInstance() throws Exception {
-        if (CustomerService.instance == null) {
-            throw new Exception("Service not initialized");
-        }
+    public static CustomerService getInstance() {
         return CustomerService.instance;
     }
 
